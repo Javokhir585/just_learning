@@ -114,18 +114,6 @@ def get_data_for_period(tab_nomer, chat_id, period):
         return data['Нач'], data['Уд'], data['Об']  # Return the total 'Об' list
 
 # Command handler for /start
-async def start(update: Update, context: CallbackContext):
-    chat_id = update.effective_chat.id
-
-    if is_registered(chat_id):
-        context.user_data['chat_id'] = chat_id
-        context.user_data['state'] = ENTERING_TAB_NOMER
-        
-        await update.message.reply_text('🇷🇺 Вы уже зарегистрированы. Пожалуйста, введите ваш табельный номер:')
-        await update.message.reply_text("🇺🇿 Siz allaqachon ro'yxatdan o'tgansiz. Iltimos, tabel raqamingizni kiriting:")
-    else:
-        await update.message.reply_text('🇷🇺 Вы не зарегистрированы. Нажмите /getid, чтобы увидеть свой идентификатор чата для регистрации.')
-        await update.message.reply_text("🇺🇿 Siz ro'yxatdan o'tmagansiz. Roʻyxatdan oʻtish uchun  /getid tugmasini bosing.")
 
 # Command handler for /getid (for unregistered users to get their chat_id)
 async def getid(update: Update, context: CallbackContext):
